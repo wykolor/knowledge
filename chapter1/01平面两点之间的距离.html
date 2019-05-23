@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>计算2D之间的平面的点</h1>
+	</body>
+	<script type="text/javascript">
+		//定义一个初始类
+		function Point(x,y){
+			this.x = x;
+			this.y = y;
+		}
+		//实例化一个对象
+		var p = new Point(3,4);
+		//在类原型上面挂载一个自定义方法，实现求两数之和的平均数
+		Point.prototype.r = function(){
+			return Math.sqrt(this.x*this.x+this.y+this.y);
+		}
+		//所有的Point的实例对象都继承了Point上面的方法
+		p.r();
+	</script>
+</html>
