@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>栈的实现和练习</title>
 </head>
 
 <body>
@@ -63,6 +63,14 @@
         console.log('Boolean值', is_leagel_breakets("((ni))(njdnj(ndjcndjv))"));
         var arr = ['4', '13', '5', '/', '+']
         // 利用栈来进行后缀表达式的计算
+        /*
+            后缀表达式算法思路：
+            1.对后缀表达式进行遍历，判断是否为运算符
+            2.如果不是运算符，就入栈
+            3.碰到运算符，就连续两次弹出栈顶元素，两个元素进行计算，将计算结果进行入栈。
+            4.两个元素的运算方式为第二个数在运算符的左边，第一个数在运算符的右边
+            5.遍历结束，返回栈顶元素（如果计算流程全部正确的情况下，栈里面只可能有一个元素）
+        */
         function cale_exp(exp) {
             // 创建一个栈对象
             var stack = new Stack();
@@ -85,6 +93,40 @@
             return stack.top();
         }
         console.log(cale_exp(arr)); //结果为6
+        /*
+            1.实现一个栈，栈中（其他方法都有）的一个min方法，返回栈里面最小的元素，时间复杂度为o(1);
+            思路：两个栈
+            2.把中缀表达式转后缀表达式（复杂）
+        */
+        // 1.
+        function MinStack() {
+            var data_stack = new Stack();
+            var min_stack = new Stack();
+            // 入栈
+            this.push = function (item) {
+                data_stack.push(item);
+                if (min_stack.isEmpty() || item < min_stack.top()) {
+                    min_stack.push(item);
+                } else {
+                    min_stack.push(min_stack.top())
+                }
+            };
+            // 弹出栈顶元素
+            this.pop = function () {
+                return data_stack.pop();
+            };
+            // min方法
+            this.min = function () {
+                return min_stack.top();
+            }
+        }
+        var minstack = new MinStack();
+        minstack.push(5);
+        minstack.push(34);
+        minstack.push(2);
+        minstack.push(7);
+        minstack.push(8);
+        console.log(minstack.pop())
     </script>
 </body>
 
