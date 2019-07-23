@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <script src="https://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../../dist/js/index.js"></script>
+    <script>
+        //   数组模拟栈
+        function Stack() {
+            var items = []; //使用数组存储数据
+            //   从栈顶添加元素-压栈
+            this.push = function (item) {
+                items.push(item);
+            };
+            // 弹出栈顶元素
+            this.pop = function () {
+                return items.pop();
+            };
+            //返回栈顶元素
+            this.top = function () {
+                return items[items.length - 1];
+            };
+            //判断栈是否为空
+            this.isEmpty = function () {
+                return items.length == 0;
+            };
+            //   判断栈的大小
+            this.size = function () {
+                return items.length;
+            };
+            //   清空栈
+            this.clear = function () {
+                items = [];
+            };
+        };
+        // 利用判断字符串中的括号是否合法
+        function is_leagel_breakets(string) {
+            var stack = new Stack();
+            for (var i = 0; i < string.length; i++) {
+                var item = string[i];
+                // 遇到左括号入栈
+                if (item == "(") {
+                    stack.push(item);
+                } else if (item == ")") {
+                    // 遇到右括号，判断栈是否为空
+                    if (stack.isEmpty()) {
+                        return false;
+                    } else {
+                        stack.pop(); //弹出左括号
+                    }
+                }
+            }//如果为空，说明字符串合法
+            return stack.isEmpty();
+        }
+        console.log('Boolean值', is_leagel_breakets("((ni))(njdnj(ndjcndjv))"));
+        var arr = ['4', '13', '5', '/', '+']
+        // 利用栈来进行后缀表达式的计算
+        function cale_exp(exp) {
+            // 创建一个栈对象
+            var stack = new Stack();
+            let checkis = ['+', '-', '*', '/'];
+            for (var y = 0; y < exp.length; y++) {
+                var item = exp[y];
+                // 判断元素是否是运算符
+                if (checkis.indexOf(item) == -1) {
+                    stack.push(item); //如果不是运算符就入栈
+                } else { //如果遇到运算符就连续弹出栈顶元素
+                    let num1 = stack.pop();
+                    let num2 = stack.pop();
+                    // 两个栈顶元素弹出并进行取整
+                    var result = parseInt(eval(num2 + item + num1));
+                    // 将计算结果入栈
+                    stack.push(result);
+                }
+            }
+            // 最后返回栈中最后一个元素
+            return stack.top();
+        }
+        console.log(cale_exp(arr)); //结果为6
+    </script>
+</body>
+
+</html>
