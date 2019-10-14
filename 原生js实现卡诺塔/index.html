@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用原生js实现汉诺塔游戏</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <h1>汉诺塔小游戏</h1>
+    <div class="container">
+        <div class="column" id="c1">
+            <!-- <div class="item">1</div>
+            <div class=" item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div> -->
+        </div>
+        <div class="column" id="c2"></div>
+        <div class="column" id="c3"></div>
+        <div class="line">
+        </div>
+    </div>
+    <div class="buttons" id="buttons">
+        <div class="btn-group">
+            <button from="c1" to="c3">左</button>
+            <button from="c1" to="c2">右</button>
+        </div>
+        <div class="btn-group">
+            <button from="c2" to="c1">左</button>
+            <button from="c2" to="c3">右</button>
+        </div>
+        <div class="btn-group">
+            <button from="c3" to="c2">左</button>
+            <button from="c3" to="c1">右</button>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+
+</html>
