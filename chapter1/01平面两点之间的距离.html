@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<h1>计算2D之间的平面的点</h1>
-		<ul>
-			<li>111</li>
-			<li>222</li>
-			<li>333</li>
-			<li>444</li>
-			<li>555</li>
-			<li>666</li>
-		</ul>
-	</body>
-	<script type="text/javascript">
-//		oLi.map((val,index)=>{
-//			oLi.onclick= function(){
-//				console.log(oLi);
-//			}
-//		})
-		//定义一个初始类
-//		function Point(x,y){
-//			this.x = x;
-//			this.y = y;
-//		}
-//		//实例化一个对象
-//		var p = new Point(3,4);
-//		//在类原型上面挂载一个自定义方法，实现求两数之和的平均数
-//		Point.prototype.r = function(){
-//			return Math.sqrt(this.x*this.x+this.y+this.y);
-//		}
-//		//所有的Point的实例对象都继承了Point上面的方法
-//		p.r();
-		
-//		function *show(){
-//			alert('a');
-//			yield;
-//			alert('b');
-//		}
-//		var gen = show();
-//		gen.next();
-//		gen.next();
-		
-		 var arr = [12,5,8];
-		 var jsons = {a:12,b:8,c:99}
-//		 for(let i in arr){
-//		 	alert(i);
-//		 }
-//		 for(let i of arr){
-//		 	alert(i)
-//		 }
-//		 for(let i in jsons){
-//		 	alert(i);
-//		 }
-//		for(let i of jsons){
-//			alert(i);
-//		}
-//		for(let key of jsons.keys()){
-//			alert(key)
-//		}
-		class Cat{
-			constructor(name){
-				this.name = name;
-			}
-			showName(){
-				console.log(this.name);
-			}
-			eat(){
-				console.log(this)
-				this.showName();
-			}
-		}
-		var c = new Cat('小猫');
-		c.showName();
-	c.eat()
-	</script>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <h1>计算2D之间的平面的点</h1>
+    <ul>
+      <li>111</li>
+      <li>222</li>
+      <li>333</li>
+      <li>444</li>
+      <li>555</li>
+      <li>666</li>
+    </ul>
+  </body>
+  <script type="text/javascript">
+    //		oLi.map((val,index)=>{
+    //			oLi.onclick= function(){
+    //				console.log(oLi);
+    //			}
+    //		})
+    //定义一个初始类
+    //		function Point(x,y){
+    //			this.x = x;
+    //			this.y = y;
+    //		}
+    //		//实例化一个对象
+    //		var p = new Point(3,4);
+    //		//在类原型上面挂载一个自定义方法，实现求两数之和的平均数
+    //		Point.prototype.r = function(){
+    //			return Math.sqrt(this.x*this.x+this.y+this.y);
+    //		}
+    //		//所有的Point的实例对象都继承了Point上面的方法
+    //		p.r();
+
+    //		function *show(){
+    //			alert('a');
+    //			yield;
+    //			alert('b');
+    //		}
+    //		var gen = show();
+    //		gen.next();
+    //		gen.next();
+
+    var arr = [12, 5, 8];
+    var jsons = { a: 12, b: 8, c: 99 };
+    //		 for(let i in arr){
+    //		 	alert(i);
+    //		 }
+    //		 for(let i of arr){
+    //		 	alert(i)
+    //		 }
+    //		 for(let i in jsons){
+    //		 	alert(i);
+    //		 }
+    //		for(let i of jsons){
+    //			alert(i);
+    //		}
+    //		for(let key of jsons.keys()){
+    //			alert(key)
+    //		}
+    class Cat {
+      constructor(name) {
+        this.name = name;
+      }
+      showName() {
+        console.log(this.name);
+      }
+      eat() {
+        console.log(this);
+        this.showName();
+      }
+    }
+    var c = new Cat("小猫");
+    c.showName();
+    c.eat();
+  </script>
 </html>
