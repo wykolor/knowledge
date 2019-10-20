@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas实现画板功能</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="wraper">
+        <h1>Canvas实现画板功能</h1>
+        <canvas id="cavs" width="700" height="300"></canvas>
+        <ul class="btns" id="btns">
+            <li><input type="color" id="colorChange" /></li>
+            <li><input type="button" value="清屏" id="cleanBoard" /></li>
+            <li><input type="button" value="撤销" id="rescind" /></li>
+            <li><input type="button" value="橡皮" id="eraser" /></li>
+            <li><input type="range" id="lineRuler" min="10" max="40" /></li>
+        </ul>
+    </div>
+
+</body>
+<script src="index.js"></script>
+
+</html>
