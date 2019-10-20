@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wraper {
+    width: 700px;
+    margin: 45px auto;
+}
+
+h1 {
+    text-align: center;
+    margin: 40px 0;
+}
+
+#cavs {
+    background-color: #fff;
+    border: 1px solid red;
+    border-radius: 25px;
+    box-shadow: 15px 15px 10px #ccc;
+}
+
+.btns {
+    margin: 30px 0 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btns li input {
+    border: none;
+    background-color: orange;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.btns li input:hover {
+    box-shadow: 7px 5px 6px #e5d4b4;
+}
