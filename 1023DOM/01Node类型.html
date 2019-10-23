@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="demo">
+        <p style="color:red">我是第一个元素</p>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>
+                <p>hahhah</p>
+            </li>
+        </ul>
+        <h1>我是最后的子元素</h1>
+    </div>
+    <script>
+        /*
+         * Node类型由DOM中所有的节点类型实现，也就是说DOM中所有的节点类型都是继承Node类型，
+         * 所有的节点都共享者相同的基本属性和方法
+         */
+        var demo = document.getElementsByClassName('demo')[0];
+        /*
+         * 属性nodeType 用于判断节点的类型
+         * 开发人员常用的是 元素节点（Node.ELEMENT_NODE(1)） 文本节点（Node.TEXT_NODE(3)）
+         */
+
+        // 判断一个节点是否是元素节点
+        if (demo.nodeType == 1) { //兼容所有浏览器的写法 
+            // demo.nodeType == Node.ELEMENT_NODE 在IE中无效
+            console.log('这是一个元素节点')
+            console.log(demo.nodeName)
+            console.log(demo.nodeValue)
+        }
+
+        /* 
+         * nodeName属性  对于元素节点 nodeName的值始终是元素的标签名
+         * nodeValue属性 
+         *
+         */
+        let childNodes = demo.childNodes;
+        console.log('childNoedes11', childNodes)
+        Array.from(childNodes).forEach(child => {
+            if (child.nodeType == 1) {
+                // 元素节点
+                console.log('elementName', child.nodeName); //标签名 大写
+                console.log('elementValue', child.nodeValue); //为null
+            } else {
+                // 文本节点
+                console.log('textName', child.nodeName); // #text
+                console.log('textValue', child.nodeValue) // 为空
+            }
+        });
+        /*
+         * firstChild
+         * lastChild
+         */
+        console.log('firstChild', demo.firstChild);
+        console.log('lastChild', demo.lastChild)
+        // 文档碎片
+        let fragment = document.createDocumentFragment();
+        Array.from(childNodes).forEach(node => {
+            fragment.appendChild(childNodes[0]);
+        })
+    </script>
+</body>
+
+</html>
