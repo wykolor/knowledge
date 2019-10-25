@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.masonry {
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: 500px) {
+    flex-direction: row;
+  }
+}
+
+.column {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+
+  @media only screen and (min-width: 500px) {
+    width: calc(100% / 5);
+  }
+}
+.item {
+  box-sizing: border-box;
+  padding: 10px;
+  counter-increment: item-counter;
+}
