@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>原生js实现拖拽</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      /**
+       *  clientX clientY 是鼠标的位置
+       *  offsetLeft offseTop 是元素距离浏览器原点（0,0）的偏移量
+       * */
+
+      var oBox = document.querySelector(".box");
+      // 鼠标事件 mousedown（开始） mousemove(移动) mouseup(结束)
+      // oBox.addEventListener("mousedown", function(e) {
+      //   /**
+      //    * 第一种方式
+      //    * */
+
+      //   // 获取最开始的左上偏移量
+      //   var left = oBox.offsetLeft;
+      //   var top = oBox.offsetTop;
+
+      //   //
+      //   var lastX = e.clientX;
+      //   var lastY = e.clientY;
+      //   document.onmousemove = function(e) {
+      //     // 移动过程中始终获得该元素的左上偏移量
+      //     var nowX = e.clientX;
+      //     var nowY = e.clientY;
+      //     // 计算移动位置
+      //     var dirX = nowX - lastX;
+      //     var dirY = nowY - lastY;
+
+      //     // 修改元素的左上位置
+      //     oBox.style.left = left + dirX + "px";
+      //     oBox.style.top = top + dirY + "px";
+      //   };
+      //   // 鼠标抬起 清除鼠标移动事件
+      //   oBox.addEventListener("mouseup", function() {
+      //     document.onmousemove = null;
+      //   });
+      // });
+
+      /**
+       * 第二种方式
+       * */
+      oBox.addEventListener("mousedown", function(e) {
+        // 算出鼠标落下时相对于盒子左上角的原点的位置
+        var dirX = e.clientX - oBox.offsetLeft;
+        var dirY = e.clientY - oBox.offsetTop;
+        document.onmousemove = function(e) {
+          // 实时计算该元素的left和top的值
+          var left = e.clientX - dirX;
+          var top = e.clientY - dirY;
+          // 修改元素的左上位置
+          oBox.style.left = left + "px";
+          oBox.style.top = top + "px";
+        };
+        // 鼠标抬起 清除鼠标移动事件
+        oBox.addEventListener("mouseup", function() {
+          document.onmousemove = null;
+        });
+      });
+    </script>
+  </body>
+</html>
