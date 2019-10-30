@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+  position: absolute;
+  /* 位置 */
+  left: 10px;
+  top: 20px;
+}
