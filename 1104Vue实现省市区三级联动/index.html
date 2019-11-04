@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 省 -->
+      <select v-model="province" @change="updateCity();updateArea()">
+        <option v-for="(item,index) in provinceArr">{{ item.name }}</option>
+      </select>
+      <!-- 市 -->
+      <select v-model="city" @change="updateArea">
+        <option v-for="city in cityArr">{{ city.name }}</option>
+      </select>
+      <!-- 区 -->
+      <select v-model="areas" v-if="areaArr.length">
+        <option v-for="area in areaArr">{{ area.name }}</option>
+      </select>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./index.js"></script>
+</html>
