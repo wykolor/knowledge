@@ -1,41 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>属性描述符</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div>
-        <p><span>姓名：</span><span id="name"></span></p>
-        <p><span>年龄：</span><span id='age'></span></p>
+      <p><span>姓名：</span><span id="name"></span></p>
+      <p><span>年龄：</span><span id="age"></span></p>
     </div>
     <script>
-        function User(name, age) {
-            Object.defineProperty(this, 'name', {
-                get: function () {
-                    return document.getElementById('name').innerHTML;
-                },
-                set: function (val) {
-                    document.getElementById('name').innerHTML = val;
-                }
-            })
-            Object.defineProperty(this, 'age', {
-                get: function () {
-                    return document.getElementById('age').innerHTML;
-                },
-                set: function (val) {
-                    document.getElementById('age').innerHTML = val;
-                }
-            })
-            this.name = name;
-            this.age = age;
-        }
-        var user = new User('王艳', 18)
+      function User(name, age) {
+        Object.defineProperty(this, "name", {
+          get: function() {
+            return document.getElementById("name").innerHTML;
+          },
+          set: function(val) {
+            document.getElementById("name").innerHTML = val;
+          }
+        });
+        Object.defineProperty(this, "age", {
+          get: function() {
+            return document.getElementById("age").innerHTML;
+          },
+          set: function(val) {
+            document.getElementById("age").innerHTML = val;
+          }
+        });
+        this.name = name;
+        this.age = age;
+      }
+      var user = new User("王艳", 18);
     </script>
-</body>
-
+  </body>
 </html>

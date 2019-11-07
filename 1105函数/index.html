@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+        声明函数 形参 实参 返回值
+        */
+
+        /**
+            利用实参接收器进行不定个数的数据相加
+        */
+        function demo(a, c, d) {
+            // 函数的形参长度
+            console.log(demo.length);
+            var sum = 0;
+            //  arguments 是实参接收器 是一个类数组 伪数组，可以像操作数组一样去操作它
+            for (var i = 0; i < arguments.length; i++) {
+                sum += arguments[i];
+            }
+            console.log('sum=', sum);
+            return sum = '1233456哈哈'; // 返回值并阻止函数的执行
+        }
+    </script>
+</body>
+
+</html>
