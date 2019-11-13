@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>字符串字节长度</h1>
+    <script>
+      /**
+       * 封装一个方法，传入任何一个字符串 返回的都是字符串的字节长度
+       * 字符串方法：charCodeAt() 返回指定字符串的Unicode编码。这个返回值在0-65537之间的整数(当返回值<=255s时，为英文，大于255时，为中文)
+       *
+       * */
+      function strCodeLen(str) {
+        // var len = str.length,
+        //   codeLen = 0;
+        // for (var i = 0; i < len; i++) {
+        //   if (str.charCodeAt(i) <= 255) {
+        //     codeLen++;
+        //   } else {
+        //     codeLen += 2;
+        //   }
+        // }
+        // return codeLen;
+
+        var codeLen = (len = str.length);
+        for (var i = 0; i < len; i++) {
+          if (str.charCodeAt(i) > 255) {
+            codeLen++;
+          }
+        }
+        return codeLen;
+      }
+      var strings = "hello 王艳";
+      console.log(strCodeLen(strings)); // 10
+    </script>
+  </body>
+</html>

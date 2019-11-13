@@ -32,5 +32,26 @@
     var arr = [1, 2, 3, 4, 5];
     arr.length = 2;
     console.log(arr);
+
+    function Person(name, age, sex) {
+      var a = 0;
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+      function add() {
+        a++;
+        console.log(a);
+      }
+      this.say = add;
+    }
+    /**
+     * 形成了闭包
+     * */
+
+    var person1 = new Person("kolor", 18, "female");
+    person1.say(); // 1
+    person1.say(); // 2
+    var person2 = new Person("jiaer", 25, "male");
+    person2.say(); // 1
   </script>
 </html>

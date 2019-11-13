@@ -34,6 +34,7 @@
     //     for (var j = 0; j < 10; j++) {
     //       myArr[j](); // 访问的i都是demo的AO对象上的i 打印出来 10个10 触发了闭包
     //     }
+
     /**
      * 闭包应用:
      *  1、累加器
@@ -78,17 +79,63 @@
     // myFood.pushFood("banana");
     // myFood.getFood();
 
-    var test = (function() {
-      return "1";
-    },
-    function() {
-      return 2;
-    })();
-    console.log(typeof test); // "number"
-    var x = 1;
-    if (function f() {}) {
-      x += typeof f;
-    }
-    console.log(x);
+    // var test = (function() {
+    //   return "1";
+    // },
+    // function() {
+    //   return 2;
+    // })();
+    // console.log(typeof test); // "number"
+    // var x = 1;
+    // if (function f() {}) {
+    //   x += typeof f;
+    // }
+    // console.log(x);
+
+    // for (var index = 0; index < 5; index++) {
+    //   // 闭包解决
+    //   // (function(i) {
+    //   //   setTimeout(function() {
+    //   //     console.log(i);
+    //   //   }, i * 1000);
+    //   // })(index);
+    //   // 把var换成let解决 具有块级作用域
+    //   setTimeout(function() {
+    //     console.log(index);
+    //   }, index * 1000);
+    // }
+
+    // 练习 下面代码执行后 x，y，z的值分别是多少
+    // 预编译
+    // var GO = {
+    //   x: 1,
+    //   y: 4,
+    //   z: 0,
+    //   add: function() {}
+    // };
+    // var AO = {
+    //   n:4,
+    // }
+    // var x = 1,
+    //   y = (z = 0);
+    // function add(n) {
+    //   return (n = n + 1);
+    // }
+    // y = add(x);
+    // function add(n) {
+    //   return (n = n + 3);
+    // }
+    // z = add(x);
+    // console.log(x, y, z); // 1 4 4
+
+    window.n = "window name";
+    let obj = {
+      n: "obj name",
+      sayN: () => {
+        console.log(this.n);
+      }
+    };
+
+    obj.sayN();
   </script>
 </html>
