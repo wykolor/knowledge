@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //   闭包练习题
+    //     function demo() {
+    //       var arr = [];
+    //       for (var index = 0; index < 10; index++) {
+    //         arr[index] = function() {
+    //           document.write(index + " ");
+    //         };
+    //       }
+    //       return arr;
+    //     }
+    //     解决方式 --立即执行函数
+    //     function demo() {
+    //       var arr = [];
+    //       for (var index = 0; index < 10; index++) {
+    //         (function(j) {
+    //           arr[j] = function() {
+    //             document.write(j + " "); //此时的j访问的是每次重新生成的立即执行函数的AO对象
+    //           };
+    //         })(index);
+    //       }
+    //       return arr;
+    //     }
+    //     var myArr = demo();
+    //     for (var j = 0; j < 10; j++) {
+    //       myArr[j](); // 访问的i都是demo的AO对象上的i 打印出来 10个10 触发了闭包
+    //     }
+    /**
+     * 闭包应用:
+     *  1、累加器
+     *  2、存储器
+     *
+     *
+     */
+    //  不依赖外部变量实现累加器
+    // function test() {
+    //   var num = 0;
+    //   function a() {
+    //     console.log(++num);
+    //   }
+    //   return a;
+    // }
+    // var demo = test();
+    // demo(); // 1
+    // demo(); // 2
+    // demo(); // 3
+
+    // // 实现类似存储器的样子
+    // function foods() {
+    //   var food = "apple";
+    //   var obj = {
+    //     getFood() {
+    //       if (food) {
+    //         console.log("I am eating " + food);
+    //         food = "";
+    //       } else {
+    //         console.log("there is nothing");
+    //       }
+    //     },
+    //     pushFood(newFood) {
+    //       food = newFood;
+    //     }
+    //   };
+    //   return obj;
+    // }
+    // var myFood = foods();
+    // myFood.getFood();
+    // myFood.getFood();
+    // myFood.pushFood("banana");
+    // myFood.getFood();
+
+    var test = (function() {
+      return "1";
+    },
+    function() {
+      return 2;
+    })();
+    console.log(typeof test); // "number"
+    var x = 1;
+    if (function f() {}) {
+      x += typeof f;
+    }
+    console.log(x);
+  </script>
+</html>

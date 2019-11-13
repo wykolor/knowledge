@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var arr = [1, 2, 3, 4, 5, 6];
+    var result = arr.reduce(function(pre, ele, index, arrs) {
+      console.log(pre, ele, index, arrs);
+      return pre + ele;
+    }, 100);
+    console.log(result);
+    //     自定义 源码
+    Array.prototype.myReduce = function(fn, init) {
+      var len = this.length;
+      var pre = init ? init : this[0];
+      var i = init ? 0 : 1;
+      for (i; i < len; i++) {
+        pre = fn(pre, this[i], i, this);
+      }
+      return pre;
+    };
+    var result = arr.myReduce(function(pre, ele, index, arrs) {
+      console.log(pre, ele, index, arrs);
+      return pre + ele;
+    }, 100);
+    console.log(result);
+  </script>
+</html>

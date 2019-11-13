@@ -18,11 +18,11 @@
 
         */
       var obj = {
-        name: "wangyan",
+        name: "kolor",
         age: 123,
         wife: ["aliiy", "Jackson"],
         son: {
-          name: "kolor",
+          name: "kolorSon",
           age: 78
         }
       };
@@ -40,12 +40,12 @@
               original[prop] !== "null" &&
               typeof (original[prop] == "object")
             ) {
-              // if (toStr.call(original[prop]) == toArray) {
-              //   target[prop] = [];
-              // } else {
-              //   target[prop] = {};
-              // }
-              target[prop] = toStr.call(original[prop]) == toArray ? [] : {};
+              if (toStr.call(original[prop]) == toArray) {
+                target[prop] = [];
+              } else {
+                target[prop] = {};
+              }
+              // target[prop] = toStr.call(original[prop]) == toArray ? [] : {};
               deepClone(original[prop], target[prop]);
             } else {
               target[prop] = original[prop];
