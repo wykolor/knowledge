@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //   原始值不能操作属性
+    var num = 4;
+    //     不报错是因为：包装类 new Number(4).len = 2  delete
+    num.len = 2;
+    //     不报错是因为：包装类 new Number(4).len Number对象上没有len这个属性 所以报undefined
+    console.log(num.len); // undefined
+    var str = "abcd";
+    //     不报错是因为：包装类 new String('abcd').length = 3  delete
+    str.length = 3;
+    //     不报错是因为：包装类 new String('abcd').length String本身具有length这个属性 此时的str还是一开始的abcd，所以length还是4
+    console.log(str.length); // 4
+
+    //    包装对象(包装类) 练习
+    var str = "abc";
+    str += 1;
+    var test = typeof str;
+    if (test.length == 6) {
+      test.sign = "typeof 返回的值可能是string";
+    }
+    console.log(test.sign); // undefined
+
+    var arr = [1, 2, 3, 4, 5];
+    arr.length = 2;
+    console.log(arr);
+  </script>
+</html>
