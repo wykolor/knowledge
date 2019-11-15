@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wrapper {
+    width: 300px;
+    margin: 40px auto;
+}
+
+.wrapper ul {
+    width: 100%;
+    border: 1px solid #333;
+    border-radius: 10px;
+    margin: 20px 0 0;
+}
+
+.wrapper ul li {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    vertical-align: middle;
+}
+
+.wrapper ul li:first-child {
+    border-radius: 10px 10px 0 0;
+}
+
+.wrapper ul li:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
+.wrapper input[type=checkbox] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.wrapper .footer {
+    margin: 20px 0 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#checkAll {
+    margin-right: 5px;
+}
+
+#checkTurn {
+    margin-right: 5px;
+    margin-left: 20px;
+}
