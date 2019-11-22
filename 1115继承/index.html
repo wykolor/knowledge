@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>继承</h1>
+  </body>
+  <script>
+    /**
+     * 继承发展史
+     *
+     *  1、传统方式  原型链
+     *      过多的继承了没用的属性
+     *  2、借用构造函数
+     *      不能继承借用构造函数的原型
+     *      每次构造函数都需要多走一个函数
+     *  3、共享原型
+     *      不能随便改动自己的原型
+     *      也不能形成自己独有的原型属性和方法，一旦修改 就都会存在
+     *  4、圣杯模式
+     *
+     * */
+
+    // 1、传统方式
+    Grand.prototype.lastName = "wang";
+    function Grand() {}
+    var grand = new Grand();
+    Father.prototype = grand;
+    function Father() {
+      this.name = "kolor";
+    }
+    var father = new Father();
+    Son.prototype = father;
+    function Son() {}
+    var son = new Son();
+
+    // 2、借用构造函数
+    Person.prototype.firstName = "kolorwang";
+    function Person(name, age, sex) {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+    }
+    function Student(name, age, sex, grade) {
+      Person.call(this, name, age, sex);
+      this.grade = grade;
+    }
+    var student = new Student("kolor", 18, "female", 99);
+
+    // 3、共享原型
+    function People() {}
+    People.prototype.lastName = "王小二";
+    function LittlePeople(name) {
+      this.name = name;
+    }
+    LittlePeople.prototype = People.prototype;
+    LittlePeople.prototype.name = "kolor 易购";
+    var lp = new LittlePeople("wangyan");
+    var people = new People();
+
+    // 4、圣杯模式
+    function inhert(Target, Origin) {
+      function F() {}
+      F.prototype = Origin.prototype;
+      Target.prototype = new F();
+      // 找回自己的构造器，不然构造器变为Origin
+      Target.prototype.constructor = Target;
+      // 把自己继承的超级父类保存起来
+      Target.prototype.uber = Origin.prototype;
+    }
+  </script>
+</html>

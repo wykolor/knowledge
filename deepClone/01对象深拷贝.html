@@ -26,34 +26,61 @@
           age: 78
         }
       };
-      var obj1 = {};
-      // 深拷贝函数
 
-      function deepClone(original, target) {
-        // 容错
-        var target = target || {},
-          toStr = Object.prototype.toString,
-          toArray = "[object Array]";
-        for (var prop in original) {
-          if (original.hasOwnProperty(prop)) {
-            if (
-              original[prop] !== "null" &&
-              typeof (original[prop] == "object")
-            ) {
-              if (toStr.call(original[prop]) == toArray) {
-                target[prop] = [];
-              } else {
-                target[prop] = {};
-              }
-              // target[prop] = toStr.call(original[prop]) == toArray ? [] : {};
-              deepClone(original[prop], target[prop]);
-            } else {
-              target[prop] = original[prop];
-            }
+      /**
+       * 对象赋值和对象浅拷贝
+       * */
+
+      // var obj1 = obj;
+      // obj1.name = "wangyan";
+      // obj1.wife = ["123", 345];
+      // console.log("obj", obj);
+      // console.log("obj1", obj1);
+
+      var obj2 = shadowCopy(obj);
+      obj2.name = "wangchenyu";
+      obj2.wife = 123;
+      function shadowCopy(original) {
+        var dest = {};
+        for (var key in original) {
+          if (original.hasOwnProperty(key)) {
+            dest[key] = original[key];
           }
         }
-        return target;
+        return dest;
       }
+      console.log("obj", obj);
+      console.log("obj2", obj2);
+
+      // var obj1 = {};
+      // // 深拷贝函数
+
+      // function deepClone(original, target) {
+      //   // 容错
+      //   var target = target || {},
+      //     toStr = Object.prototype.toString,
+      //     toArray = "[object Array]";
+      //   for (var prop in original) {
+      //     // 判断对象属性是否是原对象本身的属性，不操作原型上的
+      //     if (original.hasOwnProperty(prop)) {
+      //       if (
+      //         original[prop] !== "null" &&
+      //         typeof (original[prop] == "object")
+      //       ) {
+      //         if (toStr.call(original[prop]) == toArray) {
+      //           target[prop] = [];
+      //         } else {
+      //           target[prop] = {};
+      //         }
+      //         // target[prop] = toStr.call(original[prop]) == toArray ? [] : {};
+      //         deepClone(original[prop], target[prop]);
+      //       } else {
+      //         target[prop] = original[prop];
+      //       }
+      //     }
+      //   }
+      //   return target;
+      // }
     </script>
   </body>
 </html>
