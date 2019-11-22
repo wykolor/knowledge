@@ -50,23 +50,23 @@
       /**
        * 第二种方式
        * */
-      oBox.addEventListener("mousedown", function(e) {
-        // 算出鼠标落下时相对于盒子左上角的原点的位置
-        var dirX = e.clientX - oBox.offsetLeft;
-        var dirY = e.clientY - oBox.offsetTop;
-        document.onmousemove = function(e) {
-          // 实时计算该元素的left和top的值
-          var left = e.clientX - dirX;
-          var top = e.clientY - dirY;
-          // 修改元素的左上位置
-          oBox.style.left = left + "px";
-          oBox.style.top = top + "px";
-        };
-        // 鼠标抬起 清除鼠标移动事件
-        oBox.addEventListener("mouseup", function() {
-          document.onmousemove = null;
-        });
-      });
+      // oBox.addEventListener("mousedown", function(e) {
+      //   // 算出鼠标落下时相对于盒子左上角的原点的位置
+      //   var dirX = e.clientX - oBox.offsetLeft;
+      //   var dirY = e.clientY - oBox.offsetTop;
+      //   document.onmousemove = function(e) {
+      //     // 实时计算该元素的left和top的值
+      //     var left = e.clientX - dirX;
+      //     var top = e.clientY - dirY;
+      //     // 修改元素的左上位置
+      //     oBox.style.left = left + "px";
+      //     oBox.style.top = top + "px";
+      //   };
+      //   // 鼠标抬起 清除鼠标移动事件
+      //   oBox.addEventListener("mouseup", function() {
+      //     document.onmousemove = null;
+      //   });
+      // });
     </script>
   </body>
 </html>
