@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>数组</h1>
+    <script>
+      //       var arr = [1, 2, 3, 4, 5, 6, 7];
+      //       //       手写数组的push方法
+      //       Array.prototype.push = function() {
+      //         for (var i = 0; i < arguments.length; i++) {
+      //           this[this.length] = arguments[i];
+      //         }
+      //         return this.length;
+      //       };
+      //       function arrRandom(arr) {
+      //         arr.sort(function(prop1, prop2) {
+      //           return Math.random() - 0.5;
+      //         });
+      //         return arr;
+      //       }
+      // var wang = {
+      //   name: "wamg",
+      //   age: 18,
+      //   sex: "male"
+      // };
+      // var lin = {
+      //   lin: "lin",
+      //   age: 34,
+      //   sex: "female"
+      // };
+      // var zhou = {
+      //   name: "周",
+      //   age: 16,
+      //   sex: "female"
+      // };
+      // var arr = [lin, zhou, wang];
+      // arr.sort(function(prop1, prop2) {
+      //   return prop2.age - prop1.age; // 降序
+      // });
+
+      // 类数组
+      // var obj = {
+      //   "0": "wagnyan",
+      //   "1": 123,
+      //   "2": "哈哈",
+      //   length: 3,
+      //   push: Array.prototype.push,
+      //   splice: Array.prototype.splice
+      // };
+      // var obj = {
+      //   "2": "a",
+      //   "3": "b",
+      //   length: 2,
+      //   push: Array.prototype.push
+      // };
+      // obj.push("c");
+      // obj.push("d");
+
+      /**
+       * 1、判断是原始值还是引用值
+       * 2、引用值去掉null
+       * 3、 []
+       * */
+
+      // function type(target) {
+      //   var template = {
+      //     "[object Object]": "object",
+      //     "[object Array]": "array",
+      //     "[object Boolean]": "boolean-object",
+      //     "[object String]": "string-object",
+      //     "[object Number]": "number-object"
+      //   };
+      //   if (target == null) {
+      //     return "null";
+      //   }
+      //   if (typeof target == "object") {
+      //     var str = Object.prototype.toString.call(target);
+      //     return template[str];
+      //   } else {
+      //     return typeof target;
+      //   }
+      // }
+
+      // 数组去重
+      Array.prototype.unique = function() {
+        var obj = {},
+          arr = [],
+          len = this.length;
+        for (var i = 0; i < len; i++) {
+          if (!obj[this[i]]) {
+            obj[this[i]] = "unique";
+            arr.push(this[i]);
+          }
+        }
+        return arr;
+      };
+    </script>
+  </body>
+</html>
