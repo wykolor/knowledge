@@ -53,5 +53,35 @@
     person1.say(); // 2
     var person2 = new Person("jiaer", 25, "male");
     person2.say(); // 1
+    // 练习题
+    let a = { a: 10 };
+    let b = { b: 10 };
+    let obj = {
+      a: 10
+    };
+    obj[b] = 20;
+    console.log(obj[a]);
+
+    // 仿造ES5
+    function keys(obj) {
+      if (typeof obj !== "object") throw Error(obj + "not is a object");
+      var ret = [];
+      for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+          ret.push(prop);
+        }
+      }
+      return ret;
+    }
+    function values(obj) {
+      if (typeof obj !== "object") throw Error(obj + "not is a object");
+      var ret = [];
+      for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+          ret.push(obj[prop]);
+        }
+      }
+      return ret;
+    }
   </script>
 </html>
