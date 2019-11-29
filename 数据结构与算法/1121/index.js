@@ -1,3 +1,11 @@
+/*
+ * @Author: kolor 王艳
+ * @Date: 2019-11-22 09:10:29
+ * @LastEditTime: 2019-11-28 14:56:01
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \DHAPPd:\knowledge\数据结构与算法\1121\index.js
+ */
 /**
  * 手写链表结构，并实现以下功能：
  *      1. 遍历打印
@@ -65,7 +73,11 @@ console.log(nodeLen(node1));
  * @param index 链表下标
  */
 function getValue(root, index) {
-  //   index = 0;
+  /**
+   * @param {*} node 表示某个节点
+   * @param {*} i 该节点是第几个节点
+   * */
+
   function _getValue(node, i) {
     //   如果节点为空 返回空值
     if (!node) return null;
@@ -81,7 +93,7 @@ function getValue(root, index) {
 }
 
 /**
- * 根据标设置某个链表的中的数据
+ * 根据下标设置某个链表的中的数据
  * @param root 根节点
  * @param index 下标
  * @param newValue 设置的新值
@@ -126,11 +138,10 @@ function insertAfter(node, newNodeValue) {
 function push(root, newNodeValue) {
   // 如果节点为空
   if (!root) return;
-  // 创建一个新的节点
-  var newNode = new Node(newNodeValue);
   // 如果传入发已经是最后一个节点 也就是该链表只有一个节点的时候
   if (!root.next) {
-    newNode.next = root.next;
+    // 创建一个新的节点
+    var newNode = new Node(newNodeValue);
     root.next = newNode;
   } else {
     // 否则继续向下寻址最后一个节点
@@ -145,15 +156,11 @@ function push(root, newNodeValue) {
  * @param root 根节点
  * @param nodeValue 传入需删除节点的内容
  * */
-
 function deleteNode(root, nodeValue) {
-  function _deleteNode(node, value) {
-    if (!node) return null;
-    if (value == nodeValue) {
-      node.next = node.next.next;
-    } else {
-      _deleteNode(root, nodeValue);
-    }
+  if (!root || root.next) return null;
+  if (root.next.value == nodeValue) {
+    root.next = root.next.next;
+  } else {
+    deleteNode(node.next, nodeValue);
   }
-  _deleteNode(root, nodeValue);
 }

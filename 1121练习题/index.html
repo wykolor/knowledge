@@ -9,29 +9,29 @@
   <body>
     <script>
       /**
-       * 
+       *
        *  f(1) = 1; f(1)(2) = 2; f(1)(2)(3) = 6;设计一个函数输出以上的值
-        * */
-      function f(n) {
-        var mul = n;
-        function d(a) {
-          mul *= a;
-          return d;
-        }
-        d.toString = function() {
-          return mul;
-        };
-        return d;
-      }
-      
-      var fAO = {
-        mul: 2,
-        n: 1,
-        d: function() {}
-      };
-      var dAO = {
-        a: 2
-      };
+       * */
+      // function f(n) {
+      //   var mul = n;
+      //   function d(a) {
+      //     mul *= a;
+      //     return d;
+      //   }
+      //   d.toString = function() {
+      //     return mul;
+      //   };
+      //   return d;
+      // }
+
+      // var fAO = {
+      //   mul: 2,
+      //   n: 1,
+      //   d: function() {}
+      // };
+      // var dAO = {
+      //   a: 2
+      // };
       //       alert(f(1)(2)(3));
       //       function add(a) {
       //         var sum = a;
@@ -45,6 +45,15 @@
       //         return f;
       //       }
       //       alert(add(10)(20)(30));
+
+      // 找出一个字符串中第一个只出现一次的字符
+      // var str = "fddgfdgfdgfdgdgdfdgfdgafdgnjnjghfhbdhdferfub";
+      // function strOne(str) {
+      //   var arr = str.split("");
+
+      // }
+      // strOne(str);
+     
     </script>
   </body>
 </html>

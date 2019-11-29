@@ -136,5 +136,22 @@
     //   }
     // };
     // obj.sayN();
+
+    function Person(name, age, sex) {
+      var a = 0;
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+      function sss() {
+        a++;
+        console.log(a);
+      }
+      this.say = sss;
+    }
+    var person1 = new Person();
+    person1.say();
+    person1.say();
+    var person2 = new Person();
+    person2.say();
   </script>
 </html>
