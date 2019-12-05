@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三分钟定时器</title>
+</head>
+<style>
+    input {
+        border: 1px solid rgba(0, 0, 0, .7);
+        text-align: right;
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+
+<body>
+    minutes: <input type="number" value="0" id="minutes" />
+    seconds: <input type="number" value="0" id="seconds" />
+    <script>
+        var minutes = document.getElementById('minutes');
+        var seconds = document.getElementById('seconds');
+        var mins = 0,
+            secs = 0;
+        var timer = setInterval(function () {
+            secs++; // 每一秒执行一次 秒数增加
+            if (secs == 60) {
+                mins++; // 如果执行了60s 分钟数自增
+                minutes.value = mins; // 此时改变视图
+                secs = 0 // 秒数复位
+            }
+            if (mins == 3) { // 三分钟后定时器结束
+                clearInterval(timer) // 清除定时器
+            }
+            seconds.value = secs; // 每秒都要执行更新秒钟视图
+        }, 10);
+    </script>
+</body>
+
+</html>

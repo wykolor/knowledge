@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <span></span>
+        <i></i>
+        <strong>
+        </strong>
+    </div>
+    <script>
+        // 插入元素 insert a before b
+        // parentNode.insertBefore(a,b); 
+        Element.prototype.insertAfter(targetNode, afterNode) {
+            var beforeNode = afterNode.nextElementSibling;
+            if (beforeNode == null) {
+                this.appendChild(targetNode);
+            } else {
+                this.insertBefore(targetNode, beforeNode)
+            }
+        }
+        var strong = document.getElementsByTagName('strong')[0];
+    </script>
+</body>
+
+</html>
