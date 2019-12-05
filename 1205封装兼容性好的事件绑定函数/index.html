@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>兼容性好的事件绑定函数</title>
+</head>
+
+<body>
+    <script>
+        var wrapper = document.getElementsByClassName('wrapper');
+        var box = document.getElementsByClassName('box');
+        var content = document.getElementsByClassName('content');
+
+        function addEvent(elem, type, handle) {
+            if (elem.addEventListener) {
+                elem.addEventListener(type, handle, false);
+            } else if (elem.attachEvent) {
+                // 兼容IE9以下
+                elem.attachEvent('on' + type, function () {
+                    handle.call(elem); //默认该事件内部的this执行的是window,这里改变事件处理函数的this指向
+                })
+            } else {
+                elem['on' + type] = handle
+            }
+        }
+    </script>
+</body>
+
+</html>

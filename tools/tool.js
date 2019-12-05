@@ -26,3 +26,20 @@ function type(target) {
     return typeof target;
   }
 }
+/**
+ * @param elem 操作DOM元素
+ * @param type 事件类型
+ * @param handle 事件处理程序
+ * */
+function addEvent(elem, type, handle) {
+  if (elem.addEventListener) {
+    elem.addEventListener(type, handle, false);
+  } else if (elem.attachEvent) {
+    // 兼容IE9以下
+    elem.attachEvent('on' + type, function () {
+      handle.call(elem); //默认该事件内部的this执行的是window,这里改变事件处理函数的this指向
+    })
+  } else {
+    elem['on' + type] = handle
+  }
+}
