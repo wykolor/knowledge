@@ -1,0 +1,86 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-12-09 15:49:21
+ * @LastEditTime: 2019-12-09 18:10:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \DHAPPd:\knowledge\1209\index.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      {
+        // 解构赋值
+        let data = {
+          title: "kolor",
+          meta: [{ title: "wangyan" }]
+        };
+        let {
+          title,
+          meta: [{ title: myTitle }]
+        } = data;
+        console.log(title, myTitle);
+      }
+      {
+        // 标签模板
+        let obj = {
+          name: "wangyan",
+          info: "hello world"
+        };
+        console.log(abc`i am ${obj.name} ${obj.info}`);
+        function abc(s, a1, a2) {
+          return s + a1 + a2;
+        }
+      }
+      /**
+       * 字符串扩展
+       * */
+      {
+        // includes
+        let str = "string";
+        console.log(str.includes("r")); // true
+        console.log(str.includes("m")); // false
+      }
+      {
+        // startWith endWith
+        let str = "string";
+        console.log(str.startsWith("st")); // true
+        console.log(str.endsWith("ng")); // true
+      }
+      {
+        // repeat
+        let str = "name";
+        let name3 = str.repeat(3);
+        console.log(name3); // namenamename
+      }
+      {
+        // padStart padEnd
+        let num = "1";
+        let num2 = num.padStart(2, "0");
+        let num3 = num.padEnd(2, "0");
+        console.log(num2, num3);
+        // 应用
+        for (let i = 1; i <= 12; i++) {
+          i = i < 10 ? String(i).padStart(2, "0") : String(i);
+          console.log(i); // 01 02 03 04 05 06 07 08 09 10 11 12
+        }
+      }
+      {
+        // 模板字符串
+        let user = {
+          name: "wangyan",
+          age: 18
+        };
+        let info = `姓名是${user.name},年龄是${user.age}`;
+        console.log(info);
+      }
+    </script>
+  </body>
+</html>
