@@ -1,0 +1,56 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-12-09 15:49:21
+ * @LastEditTime: 2019-12-09 18:10:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \DHAPPd:\knowledge\1209\index.html
+ -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 函数声明优先 但是后续函数声明还是会覆盖前面的声明
+    // foo(); // 
+    // var foo;
+
+    // function foo() {
+    //   console.log(1);
+
+    // }
+    // foo = function () {
+    //   console.log(2);
+
+    // }
+
+    // function foo() {
+    //   console.log(3);
+
+    // }
+    foo();
+    var flag = true;
+    if (flag) {
+      var age = 18;
+
+      function foo() {
+        console.log(1);
+
+      }
+    } else {
+      function foo() {
+        console.log(2)
+      }
+    }
+  </script>
+</body>
+
+</html>
