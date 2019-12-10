@@ -1,55 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>封装js异步加载的工具方法</title>
-  </head>
 
-  <body>
-    <div style="width: 100px;height: 100px; background-color: red;"></div>
-    <script src="" defer="defer"></script>
-    <script type="text/javascript">
-      /**
-       * JavaScript实现异步加载的方式
-       *  1、defer  只对IE9一下有用 兼容性不好 但是可以在其script、
-       *      内部写js代码 内部代码也是异步加载
-       *  2、async 兼容性好 但是只能加载外部文件 script内部不能写代码 写了也会忽略
-       *  3、当执行某一个步骤时 手动创建script标签 添加src属性 插入文档中
-       * */
-      // 封装JavaScript异步加载的方法
-      function asyncLoad(url, callback) {
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = url;
-        // 兼容IE
-        if (script.readyState) {
-          script.onreadystatechange = function() {
-            if (
-              script.readyState == "complete" ||
-              script.readyState == "loaded"
-            ) {
-              callback();
-            }
-          };
-        } else {
-          // 其他浏览器都好使
-          script.onload = function() {
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>封装js异步加载的工具方法</title>
+</head>
+
+<body>
+  <div style="width: 100px;height: 100px; background-color: red;"></div>
+  <script src="" defer="defer"></script>
+  <script type="text/javascript">
+    /**
+     * JavaScript实现异步加载的方式
+     *  1、defer  只对IE9一下有用 兼容性不好 但是可以在其script、
+     *      内部写js代码 内部代码也是异步加载
+     *  2、async 兼容性好 但是只能加载外部文件 script内部不能写代码 写了也会忽略
+     *  3、当执行某一个步骤时 手动创建script标签 添加src属性 插入文档中
+     * */
+    // 封装JavaScript异步加载的方法
+    function asyncLoad(url, callback) {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = url;
+      // 兼容IE
+      if (script.readyState) {
+        script.onreadystatechange = function () {
+          if (
+            script.readyState == "complete" ||
+            script.readyState == "loaded"
+          ) {
             callback();
-          };
-        }
-        document.head.appendChild(script);
+          }
+        };
+      } else {
+        // 其他浏览器都好使
+        script.onload = function () {
+          callback();
+        };
       }
-      var div = document.getElementsByTagName("div")[0];
-      // 异步加载应用
-      div.onclick = function() {
-        asyncLoad("tool.js", function() {
-          _tools["print"]("王艳");
-          var sum = _tools["sum"](5, 1);
-          console.log(sum);
-        });
-      };
-    </script>
-  </body>
+      document.head.appendChild(script);
+    }
+    var div = document.getElementsByTagName("div")[0];
+    // 异步加载应用
+    div.onclick = function () {
+      asyncLoad("tool.js", function () {
+        _tools["print"]("王艳");
+        var sum = _tools["sum"](5, 1);
+        console.log(sum);
+      });
+    };
+  </script>
+</body>
+
 </html>
