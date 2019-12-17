@@ -1,0 +1,105 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-12-16 17:32:42
+ * @LastEditTime: 2019-12-17 15:08:25
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \DHAPPd:\knowledge\1216五环\index.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>css实现五环</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        width: 380px;
+        height: 190px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -190px;
+        margin-top: -95px;
+      }
+      .content {
+        width: 100px;
+        height: 100px;
+        border: 10px solid #000;
+        border-radius: 50%;
+        position: absolute;
+        opacity: 0.7;
+      }
+      .content:nth-child(2) {
+        left: 130px;
+        border-color: orange;
+        z-index: 3;
+      }
+      .content:nth-child(3) {
+        left: 260px;
+        border-color: blue;
+      }
+      .content:nth-child(4) {
+        left: 65px;
+        top: 70px;
+        border-color: green;
+      }
+      .content:nth-child(5) {
+        left: 195px;
+        top: 70px;
+        border-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+    </div>
+    <button id="btn">清除</button>
+    <script>
+      // function baz() {
+      //   console.log("baz");
+      //   bar();
+      // }
+      // function bar() {
+      //   console.log("bar");
+      //   foo();
+      // }
+      // function foo() {
+      //   console.log("foo");
+      // }
+      // baz();
+      // function foo() {
+      //   console.log(this.a);
+      // }
+      // var obj1 = {
+      //   a: 42,
+      //   foo: foo
+      // };
+      // var obj2 = {
+      //   a: 2,
+      //   obj1: obj1
+      // };
+      // var obj3 = {
+      //   a: 32,
+      //   obj2: obj2
+      // };
+      // obj3.obj2.obj1.foo();
+      var box = document.getElementsByClassName("box")[0];
+      var btn = document.getElementById("btn");
+      btn.onclick = function() {
+        removeAllChild(box);
+      };
+    </script>
+    <script src="./index.js"></script>
+  </body>
+</html>
