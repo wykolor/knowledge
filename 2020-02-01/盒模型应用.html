@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>盒模型应用</title>
+    <style>
+        .wrapper {
+            width: 234px;
+            height: 81px;
+            background-color: #808080;
+            padding-left: 50px;
+            line-height: 81px;
+            text-align: center;
+            color: #fff;
+            border: 10px dashed red;
+            /* 设置背景覆盖范围 
+                border-box 默认背景覆盖边框盒 一般不用更改
+                content-box 覆盖内容盒
+                padding-box 覆盖填充盒
+            */
+            background-clip: content-box;
+        }
+
+        p {
+            width: 200px;
+            padding: 40px;
+            border: 1px solid;
+            /*
+             短词规则：word-break
+             值：normal:  默认值 CJK字符是以文字断词，非CJK字符是以完整单词断词
+                break-all: 截断所有 按文字字符截断 不再保留完整单词
+                keep-all:  保持截断 按完整单词截断 
+             */
+            word-break: normal;
+            /* 一般不用更改 normal是比较合理的默认值*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        新闻三十分
+    </div>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus, officia, similique officiis reprehenderit
+        iure culpa cumque omnis nisi veritatis quidem nihil! Dolor exercitationem saepe enim sed omnis eveniet, quod ut.
+    </p>
+    <p>
+        你觉得羧甲淀粉钠说明书看了打马赛克健身房年德军的私家车你大三基础上内存度假村奴的食醋是年军事的
+    </p>
+
+</body>
+
+</html>
