@@ -1,0 +1,47 @@
+body {
+    padding: 20px 0;
+    background-color: #4d4a40;
+    line-height: 2;
+}
+
+.wrapper {
+    width: 90%;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+.wrapper header {
+    border: 5px solid #14414e;
+    background-color: #267890;
+    text-align: center;
+    color: #fff;
+    margin: 0 -34px;
+}
+
+.wrapper header h1 {
+    font-size: 42px;
+    font-weight: bold;
+
+}
+
+.wrapper header .link {
+    color: #dbdbdb;
+    margin-bottom: 30px;
+}
+
+.wrapper .content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.wrapper .content section p {
+    margin: 1em 0;
+}
+
+.wrapper .content section h1 {
+    font-size: 32px;
+    font-weight: bold;
+    border-bottom: 1px dotted;
+    border-top: 1px dotted;
+}
