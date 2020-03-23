@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>原型链</title>
+  </head>
+
+  <body>
+    <script>
+      // new运算符做了什么工作
+      var new2 = function(func) {
+        // 1.创建一个空对象，该对象继承自func的原型
+        var obj = Object.create(func.prototype);
+        // 执行func，并把上下文指向创建的对象
+        var result = func.call(obj);
+        // 如果func最终返回了一个对象，则new出来的结果就为func执行结果，否则new出来的结构为最初创建的对象obj
+        if (typeof result === "object") {
+          return result;
+        } else {
+          return obj;
+        }
+      };
+
+      function M(name) {
+        this.name = name;
+      }
+      var o1 = new M("kolor33");
+    </script>
+  </body>
+</html>

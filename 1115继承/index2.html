@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承</title>
+</head>
+<img src="data:image/png;base64,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"
+    alt="">
+
+<body>
+    <script>
+        /**
+         * 借用构造函数 
+         * 原理：
+         *      将父类的运行时this改为指向子类，那父类里面的属性就会最终存在于子类的实例中
+         * 缺点：
+         *      1、不能继承父类原型上面的方法和属性，没有实现真正的继承，只继承部分
+         *      2、每次构造函数都需要多走一个函数
+         * */
+        function Parent1() {
+            this.name = "parent1";
+        }
+        Parent1.prototype.say = function () {
+            console.log("say hi")
+        }
+
+        function Child1() {
+            Parent1.call(this); // 修改父类运行时的this指向到子类中
+            this.type = 'child1'
+        }
+        var a = document.createDocumentFragment();
+        var s1 = new Child1();
+
+        /**
+         * 借助原型链实现继承
+         * 原理：
+         *      把子类的原型prototype重新赋值为父类的实例对象
+         * 缺点：
+         *      如果父类的属性是引用类型，一个实例改变，所有实例都会跟着改变。
+         * */
+        function Parent2() {
+            this.name = "parent2";
+            this.play = [1, 2, 3]
+        }
+
+        function Child2() {
+            this.type = "child2"
+        }
+
+        Child2.prototype = new Parent2();
+        var s2 = new Child2();
+        var s22 = new Child2();
+        console.log(s2.play, s22.play);
+        s2.play.push(4);
+        /**
+         * 组合方式
+         * 缺点：当子类实例化的时候父类构造函数执行了两次
+         * */
+
+        function Parent3() {
+            this.name = "parent3";
+            this.play = [1, 2, 3]
+        }
+        Parent3.prototype.walk = function () {
+            console.log("walk")
+        }
+
+        function Child3() {
+            Parent3.call(this);
+            this.type = "child3";
+        }
+        Child3.prototype = new Parent3();
+        var s3 = new Child3();
+        var s33 = new Child3();
+        s3.play.push(4);
+        console.log(s3.play, s33.play);
+
+        /**
+         * 组合继承优化方式1
+         * q缺点：constructor丢失,共用原型，也无法区别实例是由父类创造的还是子类创造的
+         * */
+        function Parent4() {
+            this.name = "Parent4";
+            this.play = [1, 2, 3]
+        }
+        Parent4.prototype.walk = function () {
+            console.log("walk")
+        }
+
+        function Child4() {
+            Parent4.call(this);
+            this.type = "Child4";
+        }
+        Child4.prototype = Parent4.prototype; // 共用原型对象
+        var s4 = new Child4();
+        var s44 = new Child4();
+
+
+        /**
+         * 组合继承优化2
+         * */
+        function Parent5() {
+            this.name = "Parent5";
+            this.play = [1, 2, 3]
+        }
+        Parent5.prototype.walk = function () {
+            console.log("walk")
+        }
+
+        function Child5() {
+            Parent5.call(this);
+            this.type = "Child5";
+        }
+        Child5.prototype = Object.create(Parent5.prototype); //隔离原型对象
+        Child5.prototype.constructor = Child5; // 重新赋值子类原型对象
+        var s5 = new Child5();
+        var s55 = new Child5();
+    </script>
+</body>
+
+</html>
