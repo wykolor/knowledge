@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM事件</title>
+</head>
+
+<body>
+    <style>
+        #ev,
+        #clickMe {
+            width: 300px;
+            height: 100px;
+            background: pink;
+            text-align: center;
+            color: #fff;
+            line-height: 100px
+        }
+    </style>
+    <div id="ev">DOM事件</div>
+    <div id="clickMe">按钮</div>
+    <script>
+        var ev = document.getElementById("ev");
+        // DOM事件捕获/冒泡的具体流程 在捕获和冒泡阶段都获取到目标阶段
+        window.addEventListener('click', function () {
+            console.log("window capture")
+        }, true)
+        document.addEventListener('click', function () {
+            console.log("document capture")
+        }, true)
+        document.documentElement.addEventListener('click', function () {
+            console.log("document.documentElement capture")
+        }, true)
+        document.body.addEventListener('click', function () {
+            console.log("document.body capture")
+        }, true)
+        ev.addEventListener("click", function () {
+            console.log("ev capture");
+        }, true)
+        window.addEventListener('click', function () {
+            console.log("window capture")
+        }, false)
+        document.addEventListener('click', function () {
+            console.log("document capture")
+        }, false)
+        document.documentElement.addEventListener('click', function () {
+            console.log("document.documentElement capture")
+        }, false)
+        document.body.addEventListener('click', function () {
+            console.log("document.body capture")
+        }, false)
+        ev.addEventListener("click", function () {
+            console.log("ev capture");
+        }, false)
+        // 自定义事件
+        // var eve = new Event("kolor");
+        // ev.addEventListener("kolor", function () {
+        //     console.log("kolor event")
+        // }, false)
+        // ev.dispatchEvent(eve);
+        // 可以给自定义事件传递更多的数据
+        // var eve2 = new CustomEvent('kolor2', {
+        //     detail: {
+        //         text: ev.innerText
+        //     }
+        // })
+        // ev.addEventListener("kolor2", function (e) {
+        //     console.log("kolor2 handle", e)
+        // })
+        // ev.dispatchEvent(eve2);
+
+        // var button = document.getElementById('clickMe');
+
+        // var myEvent = new CustomEvent('demoEvent', {
+        //     bubbles: false,
+        //     cancelable: false,
+        //     detail: {
+        //         index: 'hello demo'
+        //     }
+        // })
+
+        // button.addEventListener('click', function () {
+        //     console.log('1. You click Button')
+        //     button.dispatchEvent(myEvent)
+        // }, true);
+
+        // document.body.addEventListener('demoEvent', function () {
+        //     console.log('2. You click body')
+        // }, false);
+
+        // document.addEventListener('demoEvent', function (e) {
+        //     console.log('3. You click document')
+        // }, true);
+
+        // window.addEventListener('demoEvent', function (e) {
+        //     console.log('4. You click window')
+        // }, false);
+    </script>
+</body>
+
+</html>

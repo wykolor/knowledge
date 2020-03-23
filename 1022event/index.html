@@ -60,6 +60,49 @@
   window.onload = function () {
     alert("onload")
   }
+  var str = `hahah
+  
+  woshi我是王艳`;
+
+  /**
+   * 动态创建script加载脚本并执行
+   * @param url JavaScript文件名
+   * @param callback 加载完成后的回调函数
+   * */
+  function loadScript(url, callback) {
+    var script = document.createElement("script");
+    script.type = "text/script";
+    if (script.readyState) { // IE模式
+      script.onreadystatechange = function () {
+        if (script.readyState == "loaded" || script.readyState == "complete") {
+          script.onreadystatechange = null; // 避免重复执行
+          callback();
+        }
+      }
+    } else { // 其他浏览器
+      script.onload = function () {
+        callback();
+      }
+    }
+    script.src = url;
+    document.head.appendChild(script);
+  }
+  /**
+   * XHR异步加载脚本并注入到界面中
+   * */
+  var xhr = new XMLHttpRequest();
+  xhr.open("get", "file.js", true);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+        var script = document.createElement("script");
+        script.type = "text/script";
+        script.text = xhr.responseText;
+        document.body.appendChild(script);
+      }
+    }
+  }
+  xhr.send(null);
 </script>
 <!-- <script>
     var leftMenu = document.getElementsByClassName("left-menu")[0];
