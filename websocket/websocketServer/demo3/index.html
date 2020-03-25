@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Room</title>
+  </head>
+  <body>
+    <h1>Chat Room</h1>
+    <input type="text" name="" id="input" />
+    <button id="sendBtn">发送</button>
+    <script>
+      var ws = new WebSocket("ws://localhost:3000/");
+      function showMessage(str) {
+        var div = document.createElement("div");
+        div.innerHTML = str.data;
+        if (str.type == "enter") {
+          div.style.color = "blue";
+        } else if (str.type == "leave") {
+          div.style.color = "red";
+        }
+        document.body.appendChild(div);
+      }
+      // 连接成功之后会触发open
+      ws.onopen = function() {
+        document.getElementById("sendBtn").onclick = function() {
+          var txt = document.getElementById("input").value;
+          if (txt) {
+            ws.send(txt);
+          }
+        };
+      };
+      // 关闭连接的时候 由服务器端断开连接的时候会监听到
+      ws.onclose = function() {
+        console.log("客户端关闭 close websocket");
+      };
+      // 接收到消息的时候
+      ws.onmessage = function(e) {
+        console.log(e);
+        showMessage(JSON.parse(e.data));
+      };
+    </script>
+  </body>
+</html>
