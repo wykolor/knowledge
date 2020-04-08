@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      // 创建链表
+      function Node(value) {
+        this.value = value;
+        this.next = null;
+      }
+
+      var a = new Node(3);
+      var b = new Node(2);
+      var c = new Node(5);
+      var n1 = new Node(4);
+      var n2 = new Node(6);
+      var n3 = new Node(9);
+      a.next = b;
+      b.next = c;
+      n1.next = n2;
+      n2.next = n3;
+      function addTwoNumbers(l1, l2) {
+        var newNode; // 定义一个变量来存放合并后的链表
+        // 辅助函数，得到单个链表的值
+        function nodeSum(node) {
+          var sum = 0;
+          function _nodeSum(root, i) {
+            if (!root) return sum;
+            sum += root.value * Math.pow(10, i);
+            _nodeSum(root.next, i + 1);
+          }
+          _nodeSum(node, 0);
+          return sum;
+        }
+        // 向链表结尾新增一个节点
+        function push(node, newNodeValue) {
+          if (!node) return;
+          if (!node.next) {
+            var newNode = new Node(newNodeValue);
+            node.next = newNode;
+          } else {
+            push(node.next, newNodeValue);
+          }
+        }
+
+        let sumStr = String(nodeSum(l1) + nodeSum(l2)); // 两个链表相加之和的字符串值
+        let sumArr = []; //
+        for (let i = 0; i < sumStr.length; i++) {
+          sumArr.unshift(sumStr[i]);
+        }
+        for (let j = 0; j < sumArr.length; j++) {
+          if (j === 0) {
+            newNode = new Node(Number(sumArr[j]));
+          } else {
+            push(newNode, Number(sumArr[j]));
+          }
+        }
+        return newNode;
+      }
+      console.log(addTwoNumbers(a, n1));
+    </script>
+  </body>
+</html>
