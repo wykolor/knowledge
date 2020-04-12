@@ -42,7 +42,23 @@ function bobulleSort(arr) {
     }
   }
 }
+
+function insertSort(arr) {
+  for (var i = 1; i < arr.length; i++) {
+    if (arr[i] < arr[i - 1]) {
+      var temp = arr[i];
+      for (var j = i; j >= 0; j--) {
+        if (j > 0 && arr[j - 1] > temp) {
+          arr[j] = arr[j - 1];
+        } else {
+          arr[j] = temp;
+          break;
+        }
+      }
+    }
+  }
+}
 var arr = [1, 4, 3, 5, 7, 6, 2];
 console.log(arr);
-bobulleSort(arr);
+insertSort(arr);
 console.log(arr);
