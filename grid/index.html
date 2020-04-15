@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>grid布局</title>
+	</head>
+	<body>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.container{
+				width: 500px;
+				height: 500px;
+				border: 1px solid;
+				margin: 40px;
+				font-size: 30px;
+				color: #000;
+				
+				/* 容器属性 */
+				
+				/* 开启网格布局 */
+				display: grid;
+				/* 网格布局列数 */
+				grid-template-columns: 100px 100px 100px;
+				/* 行数 */
+				grid-template-rows: 150px 200px;
+				/* 列宽 */
+				grid-column-gap: 10px;
+				/* 行高 */
+				grid-row-gap: 10px;
+				/* 列对齐方式 */
+				align-content: space-between;
+				/* 行对齐方式 */
+				justify-content: start;
+				/* 单元格的列对齐方式 */
+				align-items: center;
+				/* 单元格的行对齐方式 */
+				justify-items: center;
+				/* 速写属性：列宽 行高 */
+				place-content: center end;
+				/* 速写属性：单元格的列对齐方式 单元格的行对齐方式 */
+				place-items: start end;
+			}
+			.item1{
+				background-color: #0000FF;
+			}
+			.item2{
+				background-color: #00aa7f;
+			}
+			.item3{
+				background-color: #aaaaff;
+			}
+			.item4{
+				background-color: #55aa7f;
+			}
+			.item5{
+				background-color: #555500;
+			}
+			.item6{
+				background-color: #ff007f;
+			}
+		</style>
+		<div class="container">
+			<div class="item1">item1</div>
+			<div class="item2">item2</div>
+			<div class="item3">item3</div>
+			<div class="item4">item4</div>
+			<div class="item5">item5</div>
+			<div class="item6">item6</div>
+		</div>
+	</body>
+</html>
