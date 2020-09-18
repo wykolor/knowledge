@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>栈实践</title>
+</head>
+<body>
+    <h1>栈实践</h1>
+    <h1>栈实践</h1>
+    <h1>栈实践</h1>
+    <h1>栈实践</h1>
+    <h1>栈实践</h1>
+    <h1>栈实践</h1>
+    <h1>栈实践</h1>
+    <form action="#" id="form">
+        <input type="text" />姓名
+        <input type="image" src="1.png">
+    </form>
+
+    <script>
+        const form = document.getElementById('form');
+        form.addEventListener('submit', (event) => {
+            console.log('执行提交事件', event)
+        }) 
+
+        class Stack {
+            constructor () {
+                this.items = [];
+            }
+
+            push(node) {
+                this.items.push(node);
+                return this.items.length;
+            }
+
+            pop() {
+                return this.items.pop();
+            }
+
+            peek() {
+                return this.items[this.items.length - 1];
+            }
+
+            isEmpty() {
+                return this.items.length === 0;
+            }
+
+            clear() {
+                this.items = [];
+            }
+        }
+
+         
+        function isValid(s) {
+            var stack = new Stack();
+            for (var i = 0; i < s.length; i++) {
+                const current = s[i]; 
+                const peek = stack.peek();
+                if (peek == '(' && current == ')'  ||  peek == '[' && current == ']' || peek == '{' && current == '}' ) {
+                    // 如果匹配 peek出栈，否则，current入栈
+                    stack.pop();
+                } else {
+                    stack.push(current);
+                }
+            }
+            return stack.isEmpty();
+        }
+
+        
+    </script>
+</body>
+</html>
