@@ -95,6 +95,21 @@ function removeNodeIndex(node, index) {
   }
   return _removeNodeIndex(node, 0);
 }
-removeNodeIndex(c, 3);
-print(a);
-console.log(a);
+
+function reveseNode(root) {
+  // 如果是节点为空或者一个节点的时候
+  if (!root || !root.next) return root;
+  // 如果链表为两个节点的时候
+  if (!root.next.next) {
+    var temp = root.next;
+    root.next.next = root;
+    root.next = null;
+    return temp;
+  } else {
+    var temp = reveseNode(root.next);
+    root.next.next = root;
+    root.next = null;
+    return temp;
+  }
+}
+reveseNode(a);
