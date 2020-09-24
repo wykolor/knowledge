@@ -13,6 +13,7 @@
       <p><span>年龄：</span><span id="age"></span></p>
     </div>
     <script>
+      "user strict";
       function User(name, age) {
         Object.defineProperty(this, "name", {
           get: function() {
@@ -52,6 +53,52 @@
       //   obj.sayN();
       // }
       // aa();
+      
+      // var myObj = { a: 2 };
+      // console.log('属性描述符: ', Object.getOwnPropertyDescriptor(myObj, 'a'));
+      // Object.defineProperty(myObj, 'a', {
+      //   configurable: false
+      // })
+      // Object.defineProperty(myObj, 'a', {
+      //   writable: false,
+      // })
+      // Object.defineProperty(myObj, 'a', {
+      //   writable: true
+      // })
+
+      // Object.preventExtensions(myObj);
+      // myObj.b = 123;
+      // console.log('对象', myObj.b);
+
+      // var myObj = {
+      //   get a() {
+      //     return this._a
+      //   },
+      //   set a(val) {
+      //     this._a = val;
+      //   }
+      // }
+      // myObj.a = 123;
+      // console.log(myObj.a);
+      // myObj.a = 99;
+      // console.log(myObj.a);
+      function resolveFun() {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve([1, 2, 3, 4, 5])
+          }, 3000);
+        })
+      }
+      let data = [];
+      async function asyncData() {
+        // console.log('执行');
+        // const data = await resolveFun();
+        // console.log(data);
+        return 1;
+      }
+      const a = asyncData();
+      console.log('返回值', a);
+      
     </script>
   </body>
 </html>
