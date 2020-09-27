@@ -191,7 +191,7 @@
 
 **eg: 有如下一棵二叉树**
 
-![二叉树](https://github.com/wykolor/knowledge/raw/master/images/tree.png)
+![二叉树](https://github.com/wykolor/knowledge/raw/master/数据结构与算法/images/tree.png)
 
 用代码构建一颗上图的二叉树
 
