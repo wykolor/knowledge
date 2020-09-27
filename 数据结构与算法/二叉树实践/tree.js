@@ -97,7 +97,6 @@ function getTree(dlr, ldr) {
 }
 
 var root = getTree('abcdef', 'cbdafe');
-console.log(root);
 
 /**
  * 得到一棵树的深度
@@ -110,5 +109,97 @@ function getDeep(root) {
     return Math.max(getDeep(root.left), getDeep(root.right)) + 1;
 }
 
-console.log(getDeep(root));
+/**
+ * 深度优先检测某个值是否在二叉树中
+ *
+ * @param {*} root
+ * @param {*} targetValue
+ */
+function deepFirstSearch(root, targetValue) {
+    // 如果入的节点为空
+    if (!root) return false; 
+    // 如果要检测的值就是根节点的值
+    if (root.value === targetValue) { 
+        return true 
+    } else {
+        // 如果根节点的值不是目标值，则依次查询根的左节点，右节点
+       return deepFirstSearch(root.left, targetValue) || deepFirstSearch(root.right, targetValue);
+    }
+}
 
+/**
+ *
+ * 广度优先检测某个值是否在二叉树中
+ * @param {*} nodes 数组 某一层的所有节点
+ * @param {*} targetValue
+ */
+function breadthFirstSearch(nodes, targetValue) {
+    if (nodes.length === 0) return false; // 搜不到
+    var nexts = []; // 下一层的节点
+    for (var i = 0; i < nodes.length ; i++) {
+        // 如果在当层中搜到
+        if (nodes[i].value === targetValue) {
+            return true;
+        } else {
+            // 否则就把节点的下一层左右节点添加进下一层节点中去
+            if(nodes[i].left) {
+                nexts.push(nodes[i].left)
+            }
+            if(nodes[i].right) {
+                nexts.push(nodes[i].right)
+            }
+        }
+    }
+    // 再进行下一层的搜索
+    return breadthFirstSearch(nexts, targetValue);
+}
+
+/**
+ * 比较两颗树的不同
+ *
+ * @param {*} originRoot
+ * @param {*} newRoot
+ */
+function diff(originRoot, newRoot) {
+    var result = []; // 用于存放两棵树的不同
+    // 如果两棵树都是空的
+    if(!originRoot && !newRoot) {
+        return [];
+    } else if (!originRoot && newRoot) {
+        // 如果原来树是空的，新树有数据则为新增
+        result.push({
+            type: '新增',
+            originNode: originRoot,
+            newNode: newRoot
+        })
+    } else if (originRoot && !newRoot) {
+        // 如果原来的树有数据， 新树为空则为删除
+        result.push({
+            type: '删除',
+            originNode: originRoot,
+            newNode: newRoot
+        })
+    } else if (originRoot.value !== newRoot.value) {
+        // 修改
+        result.push({
+            type: '修改',
+            originNode: originRoot,
+            newNode: newRoot
+        })
+        // 还需继续比较左右子节点
+        var resultLeft = diff(originRoot.left, newRoot.left);
+        var resultRight = diff(originRoot.right, newRoot.right);
+        // 将后续的差异汇总到最开始的一开始的不同
+        result = [...result, ...resultLeft, ...resultRight]
+    } else {
+        // 两个节点一样继续向后比较
+        var resultLeft = diff(originRoot.left, newRoot.left);
+        var resultRight = diff(originRoot.right, newRoot.right);
+        // 将后续的差异汇总到最开始的一开始的不同
+        result = [...result, ...resultLeft, ...resultRight]
+    }
+    return result;
+}
+// var root1 = getTree('abcd', 'cbda');
+// var root2 = getTree('afkes', 'kfase');
+// console.log('比较两棵树的不同', diff(root1, root2))
