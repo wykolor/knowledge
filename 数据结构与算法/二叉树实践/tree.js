@@ -58,5 +58,57 @@ function LRD(root) {
     console.log(root.value);
 }
 
-LRD(a);
+/**
+ * 根据前序遍历和中序遍历的结果，得到一颗二叉树
+ * 
+ * 步骤： 
+ * 首先进行错误预估 
+ * 1. 找出根的值，构建根节点
+ * 2. 找出根节点在中序遍历中的索引值
+ * 3. 找出左节点的前序遍历和中序遍历 递归getTree
+ * 4. 找出右节点的前序遍历和中序遍历 递归getTree
+ * 5. 最终根节点的left等于步骤3的结果
+ * 6. 最终根节点的right等于步骤4的结果
+ *
+ * @param {*} dlr 前序遍历
+ * @param {*} ldr 中序遍历
+ */
+function getTree(dlr, ldr) {
+
+    dlr = dlr.split("");
+    ldr = ldr.split("");
+    if (dlr.length !== ldr.length) throw new Error('无效的数据');
+    if (dlr.length === 0) return null;
+
+    var rootValue = dlr[0]; // 找出根节点的值
+    var root = new Node(rootValue); // 构建根节点
+
+    var rootIndex = ldr.indexOf(rootValue); // 找出根节点在中序遍历中的索引
+    // 分割出左节点的前序遍历和中序遍历
+    var leftLdr = ldr.slice(0, rootIndex).join(""); // 左边节点的中序遍历
+    var leftDlr = dlr.slice(1, leftLdr.length + 1).join(""); // 左节点的前序遍历
+    root.left = getTree(leftDlr, leftLdr);
+ 
+    var rightLdr = ldr.slice(rootIndex + 1).join(""); // 右节点的中序遍历
+    var rightDlr = dlr.slice(leftLdr.length + 1).join(""); // 右节点的前序遍历
+    root.right = getTree(rightDlr, rightLdr);
+
+    return root; // 返回根节点
+}
+
+var root = getTree('abcdef', 'cbdafe');
+console.log(root);
+
+/**
+ * 得到一棵树的深度
+ * 思路：
+ * 一棵树的深度等于左右节点的深度最大值加1
+ * @param {*} root
+ */
+function getDeep(root) {
+    if(!root) return 0;
+    return Math.max(getDeep(root.left), getDeep(root.right)) + 1;
+}
+
+console.log(getDeep(root));
 
