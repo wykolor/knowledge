@@ -80,23 +80,21 @@ Highcharts.stockChart('container', {
 	}]
 });
 
-// Highcharts.setOptions({
-// 	lang: {
-// 		drillUpText: '< 返回 “{series.name}”'
-// 	}
-// });
 var map = null,
-	geochina = 'https://data.jianshukeji.com/jsonp?filename=geochina/';
-$.getJSON(geochina + 'china.json&callback=?', function(mapdata) {
+	// geochina = 'https://data.jianshukeji.com/jsonp?filename=geochina/';
+	geochina = 'https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json';
+	drilldown = true;
+$.getJSON(geochina, function(mapData) {
+	console.log('数据', mapData)
 	var data = [];
 	// 随机数据
-	Highcharts.each(mapdata.features, function(md, index) {
+	Highcharts.each(mapData.features, function(md, index) {
 		var tmp = {
 			name: md.properties.name,
 			value: Math.floor((Math.random() * 100) + 1) // 生成 1 ~ 100 随机值
 		};
-		if(md.properties.drilldown) {
-			tmp.drilldown = md.properties.drilldown;
+		if(!md.properties.drilldown) {
+			tmp.drilldown = md.properties.adcode;
 		}
 		data.push(tmp);
 	});
@@ -104,19 +102,28 @@ $.getJSON(geochina + 'china.json&callback=?', function(mapdata) {
 		chart: {
 			events: {
 				drilldown: function(e) {
+					if(!drilldown) return false;
+					if (e.point.properties.level === 'district') {
+						drilldown = false;
+					}
 					this.tooltip.hide();
+					console.log('瞎转')
 					// 异步下钻
 					if (e.point.drilldown) {
-                        console.log(e.point.properties);
+                        console.log(e.point.properties.level);
                         
                         var pointName = e.point.properties.fullname;
 						map.showLoading('下钻中，请稍后...');
 						// 获取二级行政地区数据并更新图表
-						$.getJSON(geochina +   e.point.drilldown + '.json&callback=?', function(data) {
+						var url = e.point.properties.level === 'district' ? `https://geo.datav.aliyun.com/areas_v2/bound/${e.point.drilldown}.json` : `https://geo.datav.aliyun.com/areas_v2/bound/${e.point.drilldown}_full.json`;
+						$.getJSON(url, function(data) {
+							console.log('下钻数据', data);
+							
 							data = Highcharts.geojson(data);
 							Highcharts.each(data, function(d) {
-								if(d.properties.drilldown) {
-									d.drilldown = d.properties.drilldown;
+								if(!d.properties.drilldown) {
+									console.log('哈哈哈')
+									d.drilldown = d.properties.adcode;
 								}
 								d.value = Math.floor((Math.random() * 100) + 1); // 生成 1 ~ 100 随机值
 							});
@@ -136,6 +143,7 @@ $.getJSON(geochina + 'china.json&callback=?', function(mapdata) {
 					}
 				},
 				drillup: function() {
+					drilldown = true;
 					map.setTitle({
 						text: '中国'
 					});
@@ -147,7 +155,6 @@ $.getJSON(geochina + 'china.json&callback=?', function(mapdata) {
 		},
 		subtitle: {
 			useHTML: true,
-			// text: '点击查看 <a href="https://www.hcharts.cn/mapdata" target="_blank">地图数据及详情</a>，注意县级数据为收费数据，如果您有需要，请 <a href="https://highcharts.com.cn/data" target="_blank">联系我们购买</a>'
 		},
 		mapNavigation: {
 			enabled: true,
@@ -157,26 +164,16 @@ $.getJSON(geochina + 'china.json&callback=?', function(mapdata) {
 		},
 		tooltip: {
 			useHTML: true,
-			headerFormat: '<table><tr><td>{point.name}</td></tr>',
-			pointFormat: '<tr><td>全称</td><td>{point.properties.fullname}</td></tr>' +
-			'<tr><td>行政编号</td><td>{point.properties.areacode}</td></tr>' +
-			'<tr><td>父级</td><td>{point.properties.parent}</td></tr>' +
-			'<tr><td>经纬度</td><td>{point.properties.longitude},{point.properties.latitude}</td></tr>' ,
+			headerFormat: '<table><tr><td>{point.properties.name}</td></tr>',
+			pointFormat: '<tr><td>全称</td><td>{point.properties.name}</td></tr>' +
+			'<tr><td>行政编号</td><td>{point.properties.adcode}</td></tr>' +
+			'<tr><td>父级</td><td>{point.properties.parent.adcode}</td></tr>' +
+			'<tr><td>经纬度</td><td>{point.properties.center[0]},{point.properties.center[1]}</td></tr>' ,
 			footerFormat: '</table>'
 		},
-		// colorAxis: {
-		//     min: 0,
-		//     minColor: '#fff',
-		//     maxColor: '#006cee',
-		//     labels:{
-		//         style:{
-		//             "color":"red","fontWeight":"bold"
-		//         }
-		//     }
-		// },
 		series: [{
 			data: data,
-			mapData: mapdata,
+			mapData: mapData,
 			joinBy: 'name',
 			name: '中国地图',
 			states: {
