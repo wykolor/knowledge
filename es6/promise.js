@@ -95,3 +95,33 @@
       loadImage('http://')
   ]).then(showImage);
 }
+
+{
+  const readFile = function() {
+      return new Promise(function(resolve, reject){
+        console.log('promise')
+        setTimeout(() => {
+          reject()
+        }, 1000);
+      })
+    }
+    const promise = readFile()
+    promise.then(res => {
+      console.log('res', res)
+      promise.then(res => {
+        console.log('再次执行', res)
+      })
+    }).catch(err => {
+      console.log('err', err)
+    })
+    promise.then(res => {
+      console.log('多次监听', res)
+    })
+    let funcs = []
+    for (var index = 0; index < 10; index++) {
+      function all(i) {
+        console.log(i)
+      }
+      all(index)
+    }
+}
