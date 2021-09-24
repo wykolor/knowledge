@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三栏布局</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- 浮动布局+margin -->
+  <!-- <style>
+    .left {
+      float: left;
+      width: 200px;
+      background: pink;
+    }
+
+    .right {
+      float: right;
+      width: 200px;
+      background: skyblue;
+    }
+
+    .main {
+      margin: 0 200px;
+      background: slateblue;
+    }
+  </style>
+  <div class="container">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="main"></div>
+  </div> -->
+  <!-- 定位 -->
+  <!-- <style>
+    .container {
+      overflow: hidden;
+      position: relative;
+    }
+    .left {
+      position: absolute;
+      left: 0;
+      width: 200px;
+      height: 100%;
+      top: 0;
+      background: pink;
+    }
+
+    .right {
+      position: absolute;
+      right: 0;
+      background: skyblue;
+      width: 200px;
+      top: 0;
+    }
+
+    /* .main {
+      margin: 0 200px;
+      background: slateblue;
+    } */
+
+    .main {
+      position: absolute;
+      top: 0;
+      left: 200px;
+      right: 200px;
+      background: red;
+    }
+  </style> -->
+
+  <!-- flex布局 -->
+  <!-- <style>
+    .container {
+      display: flex;
+    }
+
+    .left {
+      width: 200px;
+      background: blue;
+    }
+
+    .main {
+      flex: 1;
+      background: skyblue;
+    }
+
+    .right {
+      width: 200px;
+      background: red;
+    }
+  </style> -->
+
+  <!-- 表格布局 -->
+  <!-- <style>
+    .container {
+      display: table;
+      width: 100%;
+    }
+
+    .container>div {
+      display: table-cell;
+    }
+
+    .left {
+      width: 200px;
+      background: skyblue;
+    }
+
+    .right {
+      width: 200px;
+      background: springgreen;
+    }
+
+    .main {
+      background: tomato;
+    }
+  </style> -->
+
+  <!-- grid布局 -->
+  <style>
+    .container {
+      display: grid;
+      grid-template-rows: 200px;
+      width: 100%;
+      grid-template-columns: 200px auto 200px;
+    }
+
+    .left {
+      background: skyblue;
+    }
+
+    .right {
+      background: springgreen;
+    }
+
+    .main {
+      background: tomato;
+    }
+  </style>
+  <div class="container">
+    <div class="left"></div>
+    <div class="main"></div>
+    <div class="right"></div>
+  </div>
+</body>
+</html>

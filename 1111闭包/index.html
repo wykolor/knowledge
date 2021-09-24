@@ -137,21 +137,77 @@
     // };
     // obj.sayN();
 
-    function Person(name, age, sex) {
-      var a = 0;
-      this.name = name;
-      this.age = age;
-      this.sex = sex;
-      function sss() {
-        a++;
-        console.log(a);
-      }
-      this.say = sss;
+    // function Person(name, age, sex) {
+    //   var a = 0;
+    //   this.name = name;
+    //   this.age = age;
+    //   this.sex = sex;
+    //   function sss() {
+    //     a++;
+    //     console.log(a);
+    //   }
+    //   this.say = sss;
+    // }
+    // var person1 = new Person();
+    // person1.say();
+    // person1.say();
+    // var person2 = new Person();
+    // person2.say();
+  // {
+  //   let tasks = [];
+  //   let func = i => new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       console.log(i);
+  //       resolve();
+  //     }, i * 1000);
+  //   })
+
+  //   for(var i = 0; i < 5; i++) {
+  //     tasks.push(func(i))
+  //   }
+
+  //   Promise.all(tasks).then(() => {
+  //     setTimeout(() => {
+  //       console.log(i)
+  //     }, 1000)
+  //   }) 
+  // }// 0 1 2 3 4 5
+
+  //   {
+  //     setTimeout(() => {
+  //       console.log(1)
+  //       new Promise((resolve) => {
+  //         resolve(2)
+  //       }).then(value => {
+  //         console.log(value)
+  //       })
+  //     }, 0)
+
+  //     setTimeout(() => {
+  //       console.log(3)
+  //       new Promise((resolve) => {
+  //         resolve(4)
+  //       }).then(value => {
+  //         console.log(value)
+  //       })
+  //     }, 0) 
+  //   }// 1 2 3 4 
+    
+  class Person {
+    constructor(name) {
+      this.name = name
     }
-    var person1 = new Person();
-    person1.say();
-    person1.say();
-    var person2 = new Person();
-    person2.say();
+  }
+
+  class Child extends Person {
+    constructor(name, age) {
+      super(name)
+      this.age = age;
+    }
+  }
+
+  let person = new Child('王艳', 18)
+
+  
   </script>
 </html>
