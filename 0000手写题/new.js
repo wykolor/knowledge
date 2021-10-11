@@ -21,3 +21,9 @@ function new_oprater(_constructor, ...args) {
   return res instanceof Object ? res : obj;
 
 }
+
+function new_fn(fn, ...args) {
+  let obj = Object.create(fn.prototype);
+  let res = fn.apply(obj, args);
+  return res instanceof Object ? res: obj
+}

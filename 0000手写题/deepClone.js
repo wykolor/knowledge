@@ -60,3 +60,20 @@ function deepClone(target) {
 
   return clone(target)
 }
+
+function deepClone1(obj) {
+    if (typeof obj !== 'object' || obj == null) {
+        // 考虑传入的操作不是对象或者数组，或者是null
+        return obj
+    }
+
+    let result = Array.isArray(obj) ? [] : {}
+
+    for (const key in obj) {
+        if (Object.hasOwnProperty.call(obj, key)) {
+            result[key] = deepClone1[key]           
+        }
+    }
+
+    return result
+}

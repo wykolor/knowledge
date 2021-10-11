@@ -19,7 +19,7 @@ class Events {
     this.addEvent(key, fn, false, ...args)
   }
 
-  fire(key, ...args) {
+  emit(key, ...args) {
     if (!this.events.get(key)) {
       console.warn(`没有 ${key} 事件`);
       return;
